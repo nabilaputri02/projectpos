@@ -16,5 +16,9 @@ class transaksi extends Model
     {
         return $this->hasMany(detiltransaksi::class);
     }
+    public function planggan():BelongsTo
+    {
+        return $this->belongsTo(pelanggan::class);
+    }
 
 }

@@ -6,12 +6,12 @@ use Livewire\Component;
 use App\Models\pelanggan;
 use Illuminate\Support\Facades\Auth;
 
-class penjualan extends Component
+class Penjualan extends Component
 {
     public $pelanggan_id;
     public function render()
     {
-        return view('livewire.penjualan',['data'=>pelanggan::orderBy('id','desc')->get()
+        return view('Livewire.Penjualan',['data'=>pelanggan::orderBy('id','desc')->get()
     ]);
     }
 

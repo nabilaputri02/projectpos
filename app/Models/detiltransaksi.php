@@ -20,4 +20,5 @@ class detiltransaksi extends Model
     {
         return $this->belongsTo(produk::class);
     }
+    
 }

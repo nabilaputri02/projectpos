@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
 
-class transaksis extends Component
+class Transaksis extends Component
 {
     public $total;
     public $transaksi_id;
@@ -26,10 +26,10 @@ class transaksis extends Component
 
        $this->total=$transaksi->total;
        $this->kembali=$this->uang-$this->total;
-       return view('livewire.transaksis')
+       return view('livewire.Transaksis')
        ->with("data",$transaksi)
-       ->with("dataProduk",produk::where('stock','>','0')->get())
-       ->with("datatransaksiDetail",detiltransaksi::where('transaksi_id','=',$transaksi->id)->get());
+       ->with("dataproduk",produk::where('stok','>','0')->get())
+       ->with("datadetiltransaksi",detiltransaksi::where('transaksi_id','=',$transaksi->id)->get());
     }
 
     public function store()
@@ -85,8 +85,8 @@ class transaksis extends Component
         $detiltransaksi=detiltransaksi::select('*')->where('transaksi_id','=',$id)->get();
         //dd($detiltransaksi);
         foreach ($detiltransaksi as $od){
-            $stocklama = produk::select('stok')->where('id','=',$od->produk_id)->sum('stok');
-            $stock = $stocklama - $od->qty;
+            $stoklama = produk::select('stok')->where('id','=',$od->produk_id)->sum('stok');
+            $stok = $stoklama - $od->qty;
             try{
                 produk::where('id','=',$od->produk_id)->update([
                     'stok' => $stok

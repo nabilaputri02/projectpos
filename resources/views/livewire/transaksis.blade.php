@@ -50,11 +50,11 @@
 
                         @csrf
                         <div class=" card-body">
-                            <input type="hidden" name="order_id" wire:model="order_id" value="{{ $data->id }}">
+                            <input type="hidden" name="transaksi_id" wire:model="transaksi_id" value="{{ $data->id }}">
 
                             <div class="form-group">
-                                <label for="product_id">Produk</label>
-                                <select class="form-control" wire:model="product_id" name="product_id">
+                                <label for="produk_id">Produk</label>
+                                <select class="form-control" wire:model="produk_id" name="produk_id">
                                     <option hidden>--Pilih Produk--</option>
                                     @foreach($dataProduk as $dt )
                                     <option value="{{ $dt->id }}">{{ $dt->nama }}</option>
@@ -101,14 +101,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($dataOrderDetail as $dt)
+                            @foreach($datadetiltransaksi as $dt)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $dt->produk->nama }}</td>
-                                <td>@money($dt->harga)</td>
+                                <td>@money($dt->price)</td>
                                 <td>{{ $dt->qty}}</td>
-                                <td>@money($dt->harga * $dt->qty)</td>
-                                <td><button class="btn btn-sm btn-danger" wire:click="delete({{ $dt->id }})"><i class="fas fa-trash"></i></a></td>
+                                <td>@money($dt->price * $dt->qty)</td>
+                                <td><button class="btn btn-sm btn-danger" wire:click="delete({{ $dt->id }})"><i class=" fas fa-trash"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -152,8 +152,8 @@
                         </tr>
                     </table>
                    
-                    <button class="btn btn-lg btn-success" wire:click="receipt({{$data->id}})">
-                        <i class="fas fa-print"></i>Cetak</button>
+                    <button class="btn btn-lg btn-success" wire:click="receipt({{ $data->id }})">
+                        <i class="fas fa-print"></i>  Cetak</button>
                  
                 </div>
             </div>
