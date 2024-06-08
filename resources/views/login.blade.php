@@ -6,22 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login Pengguna</title>
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700
-&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesomefree/css/all.min.css') }}">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheckbootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}"><!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/ichecbootstrap.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ ('dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
 </head>
-
-<body class="hold-transition login-page" style="background-image: url('wallpeper.jpg'); background-size: cover" ;>
+<!-- <div class="vid-container">
+  <video class="bgvid" autoplay="autoplay" muted="muted" preload="auto" loop>
+      <source src="texas-the-omertosa-arknights-desktop-wallpaperwaifu-com.mp4">
+  </video> -->
+  <!-- <div class="inner-container"> -->
+<body class="hold-transition login-page" style="background-image: url('wallpeper.jpg'); background-size: cover";>
     <div class="login-box">
         <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-primary" style="background: transparent; border: 2px solid rgba(255, 255, 255, .2)";>
             <div class="card-header text-center">
-                <h1 class="h1">Aplikasi<b>POS</b></h1>
+                <h1 class="h1"><b> APLIKASI TOKO BUAH ONLINE</b></h1>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Please Login</p>
@@ -35,8 +37,8 @@
                 <form action="/login" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control @error('email') is-invalid 
-@enderror" placeholder="Email" id="email" name="email" value="{{ old('email') 
+                        <input type="email" class="form-control @error('email') is-invalid
+@enderror" placeholder="email" id="email" name="email" value="{{ old('email')
 }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -57,12 +59,10 @@
                             </div>
                         </div>
                     </div>
-
-
             </div>
             <div class="card-footer">
                 <button type="reset" class="btn btn-warning">Cancel</button>
-                <button type="submit" class="btn btn-primary floatright">Login</button>
+                <button type="submit" class="btn btn-primary float-right">Login</button>
             </div>
             <!-- /.card-body -->
         </div>

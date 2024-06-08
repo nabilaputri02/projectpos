@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class detiltransaksi extends Model
 {
-    protected $fillable=['transaksi_id','produk_id','qty','price'];
+    protected $fillable=['transaksi_id','produk_id','qty','harga'];
     use HasFactory;
 
     public function transaksi():BelongsTo

@@ -25,19 +25,16 @@ input.<br><br>
  <td>:</td>
  <td>{{ $data[0]->nama }}</td>
  </tr>
- <!-- <tr>
- <th>Kategori Produk</th>
- <tr> -->
+ <th>Stok</th>
+ <td>:</td>
+ <td>{{ $data[0]->stok }}</td>
+ </tr>
+ 
  <th>Harga</th>
  <td>:</td>
- <td>@money($data[0]->price)</td>
+ <td>@money($data[0]->harga)</td>
  </tr>
- <tr>
- <th>Deskripsi</th>
- <td>:</td>
-
- <td>{{ $data[0]->description}}</td>
- </tr>
+ 
  </table>
  </div>
  <!-- /.card-body -->

@@ -13,12 +13,16 @@ class CetakController extends Controller
     public function receipt():View
     {
         $id= session()->get('id');
+
         $transaksi=transaksi::find($id);
         //dd($transaksi)
-        $transaksiDetail=detiltransaksi::where('transaksi_id',$id)->get();
+        $detiltransaksi=detiltransaksi::where('transaksi_id',$id)->get();
         return view('penjualan.receipt')->with([
             'datatransaksi'=>$transaksi,
-            'datadetiltransaksi'=>$detiltransaksi,
+            'datadetiltransaksi'=>$detiltransaksi
         ]);
     }
 }
+
+
+

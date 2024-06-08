@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-
 use App\Models\transaksi;
 use App\Models\detiltransaksi;
 use App\Models\produk;
@@ -41,12 +40,12 @@ class Transaksis extends Component
         $transaksi=transaksi::select('*')->where('user_id','=',Auth::user()->id)->orderBy('id','desc')->first();
         $this->transaksi_id=$transaksi->id;
         $produk=produk::where('id','=',$this->produk_id)->get();
-        $harga=$produk[0]->price;
+        $harga=$produk[0]->harga;
         detiltransaksi::create([
             'transaksi_id'=>$this->transaksi_id,
             'produk_id'=>$this->produk_id,
             'qty'=>$this->qty,
-            'price'=>$harga
+            'harga'=>$harga
         ]);
 
         $total=$transaksi->total;
@@ -67,7 +66,7 @@ class Transaksis extends Component
         $detiltransaksi=detiltransaksi::select('*')->where('transaksi_id','=',$this->transaksi_id)->get();
         $total=0;
         foreach($detiltransaksi as $od){
-            $total+=$od->qty*$od->price;
+            $total+=$od->qty*$od->harga;
         }
 
         try{
@@ -99,3 +98,4 @@ class Transaksis extends Component
     }
     
 }
+

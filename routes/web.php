@@ -6,7 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CetakController;
-
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,8 @@ use App\Http\Controllers\CetakController;
 */
 
 
-Route::get('/',function(){
-    return view('welcome',[
-        "title"=>"Dashboard"
-    ]);
-})->middleware('auth');
+
+
 
 Route::get('penjualan',function(){
     return view('penjualan.index',[
@@ -48,3 +46,9 @@ Route::post('login',[LoginController::class,'authenticate']);
 Route::post('/logout',[LoginController::class,'logout'])->name('auth.login')->middleware('auth');
 
 Route::get('cetakReceipt',[CetakController::class,'receipt'])->name('cetakReceipt')->middleware('auth');
+
+Route::get('/',[WelcomeController::class,'welcome'])->middleware('auth');
+
+Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+
+

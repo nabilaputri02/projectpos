@@ -32,7 +32,7 @@ name="nama" placeholder="" value="{{ $pelanggan->nama }}">
  <div class="form-group">
  <label for="alamat">Alamat</label>
  <input type="text" class="form-control" id="alamat"
-name="alamat" placeholder="">
+name="alamat" placeholder=""  value="{{ $pelanggan->alamat}}">
  </div>
  
  <div class="form-group">

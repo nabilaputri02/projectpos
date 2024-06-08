@@ -24,7 +24,7 @@
                         <tr>
                             <th>Pelanggan</th>
                             <th>:</th>
-                            <td>{{ $data->pelanggan->nama}}</td>
+                            <td>{{ $data->nama}}</td>
                         </tr>
                         <tr>
                             <th>Tanggal</th>
@@ -56,7 +56,7 @@
                                 <label for="produk_id">Produk</label>
                                 <select class="form-control" wire:model="produk_id" name="produk_id">
                                     <option hidden>--Pilih Produk--</option>
-                                    @foreach($dataProduk as $dt )
+                                    @foreach($dataproduk as $dt )
                                     <option value="{{ $dt->id }}">{{ $dt->nama }}</option>
                                     @endforeach
                                 </select>
@@ -65,7 +65,6 @@
                             <div class="form-group">
                                 <label for="qty">Jumlah</label>
                                 <input type="number" class="form-control" wire:model="qty" name="qty">
-
 
                             </div>
 
@@ -78,7 +77,6 @@
                     </form>
                 </div>
             </div>
-
 
         </div>
 
@@ -105,9 +103,9 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $dt->produk->nama }}</td>
-                                <td>@money($dt->price)</td>
+                                <td>@money($dt->harga)</td>
                                 <td>{{ $dt->qty}}</td>
-                                <td>@money($dt->price * $dt->qty)</td>
+                                <td>@money($dt->harga * $dt->qty)</td>
                                 <td><button class="btn btn-sm btn-danger" wire:click="delete({{ $dt->id }})"><i class=" fas fa-trash"></i></a></td>
                             </tr>
                             @endforeach
@@ -160,3 +158,5 @@
         </div>
     </div>
 </div>
+
+

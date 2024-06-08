@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('judulh1','Admin - Customer')
+@section('judulh1','Admin - Pelanggan')
 @section('konten')
 <div class="col-md-6">
     @if ($errors->any())

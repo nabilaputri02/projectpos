@@ -118,13 +118,13 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Input Produk</p>
                                     </a>
-                                </li>
+                                <!-- </li>
                                 <li class="nav-item">
                                     <a href="{{ route('produk.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Laporan Produk</p>
                                     </a>
-                                </li>
+                                </li> -->
 
                             </ul>
                         </li>
@@ -154,35 +154,13 @@
                                 </p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
+                            <a href="{{ route('laporan.index')}}" class="nav-link {{ ($title==='Laporan')?'active':''}}">
+                                <i class="nav-icon fas fa-file-pdf"></i>
                                 <p>
                                     Laporan
-                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/tables/simple.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Harian</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/tables/data.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Bulanan</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/tables/jsgrid.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Tahunan</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
 
