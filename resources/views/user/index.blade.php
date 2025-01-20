@@ -1,125 +1,61 @@
-@extends('layouts.template')
-@section('tambahanCSS')
-<!-- DataTables -->
-<link rel="stylesheet" href="plugins/datatablesbs4/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="plugins/datatablesresponsive/css/responsive.bootstrap4.min.css">
-<link rel="stylesheet" href="plugins/datatablesbuttons/css/buttons.bootstrap4.min.css">
-<!-- Toastr -->
-<link rel="stylesheet" type="text/css"
-href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-@endsection
-@section('judulh1','Admin - users')
-@section('judulh3','users')
-@section('konten')
-<div class="col-md-4">
- <div class="card card-success">
- <div class="card-header">
- <h3 class="card-title">Input User</h3>
- </div>
- <!-- /.card-header -->
- <!-- form start -->
- <form action="{{ route('pengguna.store') }}" method="POST">
- @csrf
- <div class=" card-body">
- <div class="form-group">
- <label for="name">Nama</label>
- <input type="text" class="form-control" id="name"
-name="name" placeholder=" Nama Lengkap" required value="{{ old('name') }}">
- </div>
+@extends('layouts.layout')  
+@section('title', 'Pengguna')  
+@section('content')
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Tables Data User</h1>
+<p class="mb-4">Berikut adalah data pengguna yang terdaftar.</p>
 
- <!-- <div class="form-group">
- <label for="alamat">Alamat</label>
- <input type="text" class="form-control" id="alamat"
-name="alamat" placeholder="alamat" required>
- </div> -->
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Data Table</h6>
+        <a type="button" class="btn btn-primary float-right" href="{{ route('user.create') }}">
+            <i class="fas fa-plus"></i> Tambah Petugas
+        </a>
+    </div>
 
- <div class="form-group">
- <label for="email">Email</label>
- <input type="email" class="form-control @error('email') isinvalid @enderror" id="email" name="email" placeholder="JohnDoe@example.com"
-required value="{{ old('email') }}">
- @error('email')
- <div class="invalid-feedback">
- {{ $message }}
- </div>
- @enderror
- </div>
- <div class="form-group">
- <label for="password">Password</label>
- <input type="password" class="form-control" id="password"
-name="password" required>
- </div>
-
- </div>
- <!-- /.card-body -->
- <div class="card-footer">
- <button type="submit" class="btn btn-success floatright">Simpan</button>
- </div>
- </form>
- </div>
-</div>
-<div class="col-md-8">
- <div class="card card-info">
- <div class="card-header">
- <h3 class="card-title">Data User</h3>
- </div>
- <!-- /.card-header -->
- <div class="card-body">
- <table id="example1" class="table table-bordered table-striped ">
- <thead>
- <tr>
- <th>No</th>
- <th>Nama </th>
- <th>email</th>
-
- </tr>
- </thead>
- <tbody>
- @foreach($data as $dt)
- <tr>
- <td>{{ $loop->iteration }}</td>
- <td>{{ $dt->name }}</td>
- <td>{{ $dt->email }}</td>
- </tr>
- @endforeach
- </tbody>
- </table>
- </div>
- </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $dt)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $dt->name }}</td>
+                        <td>{{ $dt->username }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 @endsection
+
 @section('tambahanJS')
-<!-- DataTables & Plugins -->
-<script src="plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="plugins/datatablesresponsive/js/dataTables.responsive.min.js"></script>
-<script src="plugins/datatablesresponsive/js/responsive.bootstrap4.min.js"></script>
-<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="plugins/jszip/jszip.min.js"></script>
-<script src="plugins/pdfmake/pdfmake.min.js"></script>
-<script src="plugins/pdfmake/vfs_fonts.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- Toastr -->
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></s
-cript>
-@endsection
-@section('tambahScript')
+<!-- jQuery -->
+<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap JS -->
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- jQuery Easing -->
+<script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<!-- SB Admin 2 -->
+<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+<!-- DataTables -->
+<script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+<!-- DataTables Initialization -->
 <script>
-$(function() {
- $("#example1").DataTable({
- "responsive": true,
- "lengthChange": true,
- "autoWidth": false,
- "responsive": true,
- }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-});
-@if($message = Session::get('success'))
-toastr.success("{{ $message}}");
-@elseif($message = Session::get('updated'))
-toastr.warning("{{ $message}}");
-@endif
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
 </script>
 @endsection

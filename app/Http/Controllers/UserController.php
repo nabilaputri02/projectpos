@@ -1,30 +1,52 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\user;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
+{ 
+public function index()
+    {
+        return view('user.index',[
+            "title"=>"Data User",
+            "data"=>User::all()
+        ]); 
+    }
+   
+
+    public function create()
+    {
+        return view('user.create')->with([
+            "title" => "Tambah Data User"]);
+    }
+
+    public function store(Request $request)
 {
-    //
-    public function index()
-    {
-        return view('user.index',["title"=>"Data User","data"=>user::all() ]);
-    }
+    // Validasi data yang diterima
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'username' => 'required|string|max:255|unique:users',
+        'password' => 'required|string|min:4',
+    ]);
 
-    public function store(Request $request):RedirectResponse
-    {
-        $request->validate([
-            "name"=>"required",
-            "email"=>"required",
-            "password"=>"required"
-        ]);
-        $password=Hash::make($request->password);
-        $request->merge(["password"=>$password]);
+    // Membuat pengguna baru
+    $user = new User();
+    $user->name = $validatedData['name'];
+    $user->username = $validatedData['username'];
+    $user->password = Hash::make($validatedData['password']); // Enkripsi password
+    $user->save(); // Menyimpan ke database
 
-        user::create($request->all());
-        return redirect()->route('pengguna.index')->with('success','Data Berhasil Ditambah');
-    }
+    // Mengalihkan ke halaman index dengan pesan sukses
+    return redirect()->route('user.index')->with('success', 'Petugas berhasil ditambahkan.');
 }
+
+
+    
+    
+}
+

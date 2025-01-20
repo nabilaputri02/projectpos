@@ -1,67 +1,72 @@
-@extends('layouts.template')
-@section('judulh1','Admin - Dashboard')
-@section('konten')
-<div class="col-lg-12">
- <div class="card">
- <div class="card-header border-0">
- <div class="d-flex justify-content-between">
- <h3 class="card-title">Dashboard</h3>
+@extends('layouts.layout')
 
- </div>
- </div>
- <div class="card-body">
- <h3>Halaman Dashboard</h3>
-  <!-- Main content -->
-  <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+@section('title', 'Dashboard')
 
-                <p>Produk</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="{{route('produk.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+@section('content')
+<div class="row">
+
+    <!-- Data Pegawai -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Data Pegawai
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            {{ $pegawaiCount ?? '0' }}
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>20</h3>
+        </div>
+    </div>
 
-                <p>Pelanggan</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="{{route('pelanggan.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <!-- Data User -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Data User
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            {{ $userCount ?? '0' }}
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user fa-2x text-gray-300"></i>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
+        </div>
+    </div>
 
-                <p>Penjualan</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="penjualan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <!-- Absensi Pegawai -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Absensi Pegawai
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            {{ $absensiCount ?? '0' }}
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
             </div>
-          </div>
- </div>
- </div>
+        </div>
+    </div>
+
 </div>
 @endsection
